@@ -1,0 +1,16 @@
+.dashboardContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.sidebarWrapper {
+  flex: 1;
+  min-width: 280px;
+}
+
+.chartWrapper {
+  flex: 3;
+  min-width: 500px;
+}
