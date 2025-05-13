@@ -2,7 +2,9 @@ export const formatTemperatureData = (raw) => {
   return raw.map((item) => ({
     timestamp: item.timestamp,
     formattedTime: new Date(item.timestamp).toLocaleString("pt-BR"),
-    battery_temperature: item.battery_temperature,
-    cpu_temperature: item.cpu_temperature,
+    temp_bat: item.temp_bat,
+    temp_front: item.temp_front,
+    temp_back: item.temp_back,
+    temp_cpu: item.temp_cpu,
   }));
 };
