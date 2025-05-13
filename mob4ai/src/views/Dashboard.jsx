@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { getBatteryData } from "../controllers/batteryController";
 import { getTemperatureData } from "../controllers/temperatureController";
 import BatteryChart from "../components/BatteryChart";
-import TemperatureChart from "../components/temperatureChart";
+import TemperatureChart from "../components/TemperatureChart";
 import Sidebar from "../components/Sidebar";
 import styles from "../styles/Dashboard.module.css";
+import CurrentChart from "../components/CurrentChart";
+
+
 
 const Dashboard = () => {
   const [batteryData, setBatteryData] = useState([]);
@@ -20,14 +23,24 @@ const Dashboard = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    fetchData(); // carregamento inicial
-  }, []);
+useEffect(() => {
+  const fetchData = async () => {
+    const battery = await getBatteryData();
+    const temperature = await getTemperatureData();
 
-  const lastBattery = batteryData[batteryData.length - 1];
-  const lastTemperature = temperatureData[temperatureData.length - 1];
+    console.log("🔋 batteryData:", battery);
+    console.log("🌡️ temperatureData:", temperature);
+
+    setBatteryData(battery);
+    setTemperatureData(temperature);
+  };
+
+  fetchData();
+}, []);
 
   return (
+    <>
+    <CurrentChart data={batteryData} />
     <div className={styles.dashboardContainer}>
       <div className={styles.sidebarWrapper}>
         <Sidebar battery={lastBattery} temperature={lastTemperature} />
@@ -41,6 +54,8 @@ const Dashboard = () => {
         <TemperatureChart data={temperatureData} />
       </div>
     </div>
+    </>
+
   );
 };
 

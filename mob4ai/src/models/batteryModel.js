@@ -2,12 +2,12 @@ export const formatBatteryData = (raw) => {
   return raw.map((item) => ({
     timestamp: item.timestamp,
     formattedTime: new Date(item.timestamp).toLocaleString("pt-BR"),
-    rem_cap: item.rem_cap,
     inst_curr: item.inst_curr,
-    voltage: item.voltage,
     battery_level: item.battery_level,
-    battery_status: batteryStatusMap[item.battery_status] || "Desconhecido",
-    plug_type: plugTypeMap[item.plug_type] || "Desconhecido",
+    voltage: item.voltage,
+    rem_cap: item.rem_cap,
+    plug_type: item.plug_type,
+    battery_status: item.battery_status,
   }));
 };
 
