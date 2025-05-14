@@ -5,7 +5,7 @@ const Welcome = ({ onStart }) => (
   <Video>
     <div className={styles.overlay}>
       <h1>MOB4AI Dashboard</h1>
-      <p>Monitore em tempo real os dados do sistema</p>
+      <p className='p1'>Monitore em tempo real os dados do sistema</p>
       <button onClick={onStart}>Entrar</button>
     </div>
   </Video>
