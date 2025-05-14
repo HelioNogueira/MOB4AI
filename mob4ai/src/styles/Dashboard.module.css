@@ -44,7 +44,6 @@ button:hover {
   background-color: #26a69a;
 }
 
-/* Responsividade */
 @media (max-width: 900px) {
   .dashboardContainer {
     flex-direction: column;

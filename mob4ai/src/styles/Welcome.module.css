@@ -1,27 +1,48 @@
 .container {
-  background-color: #121212;
-  color: #ffffff;
+  position: relative;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6); /* escurece para legibilidade */
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
 }
 
-h1 {
+.overlay h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-p {
+.overlay p {
   color: #B0B0B0;
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
-button {
+.overlay button {
   background-color: #4DB6AC;
   color: #121212;
   border: none;
@@ -32,21 +53,20 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+.overlay button:hover {
   background-color: #26a69a;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
-  h1 {
+  .overlay h1 {
     font-size: 2rem;
   }
 
-  p {
+  .overlay p {
     font-size: 1rem;
   }
 
-  button {
+  .overlay button {
     width: 100%;
     font-size: 1rem;
   }
