@@ -27,7 +27,7 @@ const Dashboard = () => {
   return (
     <div className={styles.dashboardContainer}>
       <div className={styles.sidebarWrapper}>
-        <Sidebar battery={lastBattery} temperature={lastTemperature} />
+        <Sidebar temperature={lastTemperature} />
       </div>
       <div className={styles.chartWrapper}>
         <BatteryChart data={batteryData} />
