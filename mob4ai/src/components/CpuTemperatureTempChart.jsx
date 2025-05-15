@@ -8,10 +8,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const CurrentChart = ({ data }) => {
+const CpuTemperatureChart = ({ data }) => {
   return (
     <div style={{ width: "100%", height: 300 }}>
-      <h3 style={{ textAlign: "center" }}>Corrente Instantânea (mAh)</h3>
+      <h3 style={{ textAlign: "center" }}>Temperatura da CPU (°C)</h3>
       <ResponsiveContainer>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -19,14 +19,14 @@ const CurrentChart = ({ data }) => {
           <YAxis />
           <Tooltip
             labelFormatter={(label) => `Data: ${label}`}
-            formatter={(value, name) => [`${value} mAh`, "Corrente"]}
+            formatter={(value, name) => [`${value} °C`, "Temp. CPU"]}
           />
           <Line
             type="monotone"
-            dataKey="inst_curr"
-            stroke="#e91e63"
+            dataKey="temp_cpu"
+            stroke="#ff9800"
             dot={false}
-            name="Corrente"
+            name="Temp. CPU"
           />
         </LineChart>
       </ResponsiveContainer>
@@ -34,4 +34,4 @@ const CurrentChart = ({ data }) => {
   );
 };
 
-export default CurrentChart;
+export default CpuTemperatureChart;
