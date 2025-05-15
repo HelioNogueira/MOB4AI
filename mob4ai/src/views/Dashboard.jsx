@@ -21,7 +21,7 @@ const Dashboard = () => {
     fetch();
   }, []);
 
-  const lastBattery = batteryData[batteryData.length - 1];
+  
   const lastTemperature = temperatureData[temperatureData.length - 1];
 
   return (
@@ -31,10 +31,11 @@ const Dashboard = () => {
       </div>
       <div className={styles.chartWrapper}>
         <BatteryChart data={batteryData} />
-        <TemperatureChart data={temperatureData} />
+      <TemperatureChart data={temperatureData} />
       </div>
     </div>
   );
 };
 
 export default Dashboard;
+
