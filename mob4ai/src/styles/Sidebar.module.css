@@ -1,0 +1,8 @@
+.sidebar {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  color: #333;
+  font-family: sans-serif;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}

@@ -1,31 +1,50 @@
-const Sidebar = ({ battery, temperature }) => {
-  if (!battery || !temperature) return <p>Carregando...</p>;
+import React from "react";
+import styles from "../styles/Sidebar.module.css";
 
-  return (
-    <aside style={styles.sidebar}>
-      <h3>Status Geral</h3>
-      <p><strong>Hora:</strong> {battery.formattedTime}</p>
-      <p><strong>Nível:</strong> {battery.battery_level}%</p>
-      <p><strong>Voltagem:</strong> {battery.voltage} V</p>
-      <p><strong>Corrente:</strong> {battery.current} mA</p>
-      <p><strong>Status:</strong> {battery.battery_status}</p>
-      <p><strong>Plug:</strong> {battery.plug_type}</p>
-      <hr />
-      <p><strong>Temp. Bateria:</strong> {temperature.battery_temperature} ºC</p>
-      <p><strong>Temp. CPU:</strong> {temperature.cpu_temperature} ºC</p>
-    </aside>
-  );
+const plugTypeMap = {
+  0: "Unplugged",
+  1: "AC",
+  2: "USB",
+  3: "Wireless",
 };
 
-const styles = {
-  sidebar: {
-    background: '#e9e9e9',
-    padding: '20px',
-    borderRadius: '10px',
-    maxWidth: '300px',
-    marginBottom: '20px',
-    boxShadow: '0 0 8px rgba(0,0,0,0.1)',
-  }
+const batteryStatusMap = {
+  1: "Unknown",
+  2: "Charging",
+  3: "Discharging",
+  4: "Not Charging",
+  5: "Full",
+  6: "Wireless",
+};
+
+const Sidebar = ({ data }) => {
+  if (!data) return <div className={styles.sidebar}>Passe o mouse nos gráficos</div>;
+
+  const {
+    timestamp,
+    plug_type,
+    battery_status,
+    voltage,
+    inst_curr,
+    temp_bat,
+    temp_cpu,
+  } = data;
+
+  const formattedDate = new Date(timestamp).toLocaleString("pt-BR");
+
+  return (
+    <div className={styles.sidebar}>
+      <h3>Dados Atuais</h3>
+      <p><strong>Data:</strong> {formattedDate}</p>
+      <p><strong>Plug Type:</strong> {plugTypeMap[plug_type] || "N/A"}</p>
+      <p><strong>Status:</strong> {batteryStatusMap[battery_status] || "N/A"}</p>
+      <p><strong>Voltage:</strong> {voltage} mV</p>
+      <p><strong>Corrente:</strong> {inst_curr} mAh</p>
+      <p><strong>Temp. Bateria:</strong> {temp_bat} °C</p>
+      <p><strong>Temp. CPU:</strong> {temp_cpu} °C</p>
+      
+    </div>
+  );
 };
 
 export default Sidebar;
