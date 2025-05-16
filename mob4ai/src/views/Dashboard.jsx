@@ -8,7 +8,6 @@ import TemperatureChart from "../components/TemperatureChart";
 import Sidebar from "../components/Sidebar";
 import styles from "../styles/Dashboard.module.css";
 
-// Função para agrupar dados por intervalo de tempo
 const groupDataByInterval = (data, intervalMs = 10000) => {
   const grouped = new Map();
 
@@ -24,7 +23,7 @@ const groupDataByInterval = (data, intervalMs = 10000) => {
       group.reduce((sum, item) => sum + (item[key] ?? 0), 0) / group.length;
 
     result.push({
-      timestamp,  // ESSENCIAL para tooltip funcionar
+      timestamp,
       formattedTime: new Date(timestamp).toLocaleTimeString("pt-BR"),
       inst_curr: avg("inst_curr"),
       rem_cap: avg("rem_cap"),
@@ -41,8 +40,7 @@ const groupDataByInterval = (data, intervalMs = 10000) => {
   return result;
 };
 
-// Função que une dados de bateria e temperatura pelo timestamp mais próximo
-function mergeDataByTimestamp(batteryData, tempData) {
+const mergeDataByTimestamp = (batteryData, tempData) => {
   return batteryData.map((bat) => {
     const closestTemp = tempData.reduce((prev, curr) =>
       Math.abs(curr.timestamp - bat.timestamp) < Math.abs(prev.timestamp - bat.timestamp)
@@ -55,7 +53,7 @@ function mergeDataByTimestamp(batteryData, tempData) {
       temp_cpu: closestTemp?.temp_cpu,
     };
   });
-}
+};
 
 const Dashboard = () => {
   const [groupedData, setGroupedData] = useState([]);
@@ -75,7 +73,7 @@ const Dashboard = () => {
         }
 
         const merged = mergeDataByTimestamp(battery, temperature);
-        const grouped = groupDataByInterval(merged, 10000); // agrupar a cada 10 segundos
+        const grouped = groupDataByInterval(merged);
         setGroupedData(grouped);
       } catch (err) {
         setError(err.message);

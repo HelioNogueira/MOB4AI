@@ -18,9 +18,7 @@ const batteryStatusMap = {
 };
 
 const Sidebar = ({ data }) => {
-  if (!data) return <h1>MOB4AI Dash</h1>;
-
-
+  if (!data) return <h1>Mob4ai Dashboard</h1>;
 
   const {
     timestamp,
@@ -28,9 +26,9 @@ const Sidebar = ({ data }) => {
     battery_status,
     voltage,
     inst_curr,
+    rem_cap,
     temp_bat,
     temp_cpu,
-    rem_cap,
   } = data;
 
   const formattedDate = new Date(timestamp).toLocaleString("pt-BR", {
@@ -48,14 +46,13 @@ const Sidebar = ({ data }) => {
       <p><strong>Data:</strong> {formattedDate}</p>
       <p><strong>Plug Type:</strong> {plugTypeMap[plug_type] || "N/A"}</p>
       <p><strong>Status:</strong> {batteryStatusMap[battery_status] || "N/A"}</p>
-      <p><strong>Voltage:</strong> {voltage} mV</p>
-      <p><strong>Corrente Instantânea:</strong> {inst_curr} mAh</p>
+      <p><strong>Voltage:</strong> {voltage?.toFixed(0)} mV</p>
+      <p><strong>Corrente Instantânea:</strong> {inst_curr?.toFixed(1)} mAh</p>
       <p><strong>Capacidade:</strong> {rem_cap?.toFixed(1)} %</p>
-      <p><strong>Temperatura da Bateria:</strong> {temp_bat} °C</p>
-      <p><strong>Temperatura da CPU:</strong> {temp_cpu} °C</p>
+      <p><strong>Temperatura da Bateria:</strong> {temp_bat?.toFixed(1)} °C</p>
+      <p><strong>Temperatura da CPU:</strong> {temp_cpu?.toFixed(1)} °C</p>
     </div>
   );
 };
 
 export default Sidebar;
-
