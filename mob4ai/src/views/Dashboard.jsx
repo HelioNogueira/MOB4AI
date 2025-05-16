@@ -31,8 +31,9 @@ const groupDataByInterval = (data, intervalMs = 10000) => {
       battery_level: avg("battery_level"),
       battery_status: group[0]?.battery_status,
       plug_type: group[0]?.plug_type,
-      temp_bat: avg("temp_bat"),
-      temp_cpu: avg("temp_cpu"),
+      temp_bat: avg("temp_bat") / 1000,
+      temp_cpu: avg("temp_cpu") / 1000,
+
     });
   }
 

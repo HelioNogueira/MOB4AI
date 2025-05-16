@@ -55,6 +55,13 @@ button:hover {
     border-bottom: 1px solid #2C2C2C;
     flex-direction: row;
     justify-content: space-between;
+
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 280px;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .chartWrapper {

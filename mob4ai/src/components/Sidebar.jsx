@@ -21,7 +21,6 @@ const Sidebar = ({ data }) => {
   if (!data) {
   return (
     <div style={{
-      backgroundColor: "#1e1e1e",
       width: "100%",
       textAlign: "center",
       marginTop: "50px",
