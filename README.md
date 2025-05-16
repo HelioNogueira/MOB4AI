@@ -28,7 +28,7 @@ Separação de responsabilidades:
 | `App.jsx`        | Roteamento manual entre telas com `useState`       |
 
 
-## 🧪 2. Tecnologias Utilizadas
+## 2. Tecnologias Utilizadas
 
 | Tecnologia       | Finalidade                                          |
 |------------------|-----------------------------------------------------|
@@ -41,13 +41,13 @@ Separação de responsabilidades:
 | CORS             | Liberação de requisições entre front e back         |
 
 
-## 🚀 3. Funcionalidades Implementadas
+## 3. Funcionalidades Implementadas
 
-### ✅ Tela Inicial (Welcome)
+### Tela Inicial (Welcome)
 - Vídeo de fundo animado
 - Botão "Entrar" que leva ao dashboard (`setPage("dashboard")`)
 
-### ✅ Dashboard
+### Dashboard
 - Consome dados das rotas:
   - `GET /battery`
   - `GET /temperature`
@@ -57,11 +57,11 @@ Separação de responsabilidades:
   - Temperatura da Bateria (linha)
   - Temperatura da CPU (linha)
 
-### ✅ Tooltips customizadas
+### Tooltips customizadas
 - Ao passar o mouse no gráfico:
   - Exibe: **data e hora**, **corrente (mAh)**, **capacidade (%)**, **temperaturas (°C)**
 
-### ✅ Barra Lateral (Sidebar)
+### Barra Lateral (Sidebar)
 - Sincronizada com os gráficos via `onMouseMove`
 - Exibe:
   - Tipo de plug (USB, AC, etc.)
@@ -69,7 +69,7 @@ Separação de responsabilidades:
   - Corrente e voltagem
   - Temperaturas em tempo real
 
-### ✅ Formatação de Dados
+### Formatação de Dados
 - `plug_type: 2 → "USB"`
 - `battery_status: 3 → "Discharging"`
 - `timestamp (ms) → DD/MM/AA HH:mm:ss`
