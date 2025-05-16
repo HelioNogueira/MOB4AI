@@ -18,7 +18,20 @@ const batteryStatusMap = {
 };
 
 const Sidebar = ({ data }) => {
-  if (!data) return <h1>Mob4ai Dashboard</h1>;
+  if (!data) {
+  return (
+    <div style={{
+      backgroundColor: "#1e1e1e",
+      width: "100%",
+      textAlign: "center",
+      marginTop: "50px",
+      color: "#fff",
+    }}>
+      <h1>Mob4ai Dashboard</h1>
+    </div>
+  );
+}
+
 
   const {
     timestamp,

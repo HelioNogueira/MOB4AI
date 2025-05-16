@@ -19,13 +19,12 @@
 .chartWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 30px;
   padding: 30px;
   flex-grow: 1;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 100px;
 }
 
 

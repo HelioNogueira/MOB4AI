@@ -7,37 +7,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const formatDateTime = (timestamp) =>
-  new Date(timestamp).toLocaleString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-
-const UnifiedTooltip = ({ active, payload }) => {
-  if (active && payload?.length) {
-    const d = payload[0].payload;
-    return (
-      <div style={{ background: "#fff", padding: 10, border: "1px solid #ccc" }}>
-        <p><strong>Data:</strong> {formatDateTime(d.timestamp)}</p>
-        <p><strong>Corrente Instantânea:</strong> {d.inst_curr} mAh</p>
-        <p><strong>Capacidade:</strong> {d.rem_cap?.toFixed(1)} %</p>
-        <p><strong>Temperatura da Bateria:</strong> {d.temp_bat} °C</p>
-        <p><strong>Temperatura da CPU:</strong> {d.temp_cpu} °C</p>
-      </div>
-    );
-  }
-  return null;
-};
+import UnifiedTooltip from "./UnifiedTooltip";
 
 const TemperatureChart = ({ data, onHover }) => {
   return (
     <div style={{ width: "100%", height: 300 }}>
-      <h3 style={{ textAlign: "center" }}>Temperaturas (ºC)</h3>
+      <h3 style={{ textAlign: "center" }}>Temperaturas (°C)</h3>
       <ResponsiveContainer>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -55,13 +30,15 @@ const TemperatureChart = ({ data, onHover }) => {
           <Line
             type="monotone"
             dataKey="temp_bat"
-            stroke="#ff7300"
+            name="Temperatura Bateria"
+            stroke="#00C49F"
             dot={false}
           />
           <Line
             type="monotone"
             dataKey="temp_cpu"
-            stroke="#387908"
+            name="Temperatura CPU"
+            stroke="#FF8042"
             dot={false}
           />
         </LineChart>
